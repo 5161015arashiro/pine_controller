@@ -9,11 +9,10 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage
 )
 
 from pine_controller import pine_controller
-from pine_controller.message import message_type
 
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
 channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
@@ -40,7 +39,7 @@ def callback(request):
         if not isinstance(event.message, TextMessage):
             continue
         
-        return_text = event.message.text
+        controller.message(event.message.text)
 
         if event.message.text == "畑指定":
             return_text = "現在の畑は" + controller.get_target()
@@ -49,7 +48,9 @@ def callback(request):
             event.reply_token,
             # TextSendMessage(text=event.message.text)
             #TextSendMessage(text="あらしろパイン")
-            TextMessage(text=return_text)
+            TextMessage(text=return_text,quick_reply=QuickReply(items=[
+                                   QuickReplyButton(action=MessageAction(label="label", text="text"))
+                               ]))
         )
 
     return 'OK'
