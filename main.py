@@ -9,9 +9,9 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage , 
-    ConfirmTemplate, PostbackAction, MessageAction
+    MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage , Template
 )
+
 
 from pine_controller import pine_controller
 
