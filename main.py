@@ -9,7 +9,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage
+    MessageEvent, TextMessage, TextSendMessage, QuickReply, QuickReplyButton, MessageAction
 )
 
 from pine_controller import pine_controller
@@ -39,7 +39,7 @@ def callback(request):
         if not isinstance(event.message, TextMessage):
             continue
         
-        controller.message(event.message.text)
+        #controller.message(event.message.text)
 
         if event.message.text == "畑指定":
             return_text = "現在の畑は" + controller.get_target()
