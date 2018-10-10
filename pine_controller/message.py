@@ -4,5 +4,5 @@ class message_type:
             return "ヘルプはまだない"
         elif text == "設定確認":
             return "JSONを読んで加工して返そうと思っている"
-        elif text == "畑指定"
+        elif text == "畑指定":
             return ""
