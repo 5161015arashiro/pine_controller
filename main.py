@@ -9,7 +9,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, QuickReply, QuickReplyButton, MessageAction
+    MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage
 )
 
 from pine_controller import pine_controller
@@ -48,9 +48,26 @@ def callback(request):
             event.reply_token,
             # TextSendMessage(text=event.message.text)
             #TextSendMessage(text="あらしろパイン")
-            TextMessage(text=return_text,quick_reply=QuickReply(items=[
-                                   QuickReplyButton(action=MessageAction(label="label", text="text"))
-                               ]))
+            # TextMessage(text=return_text,quick_reply=QuickReply(items=[
+            #                        QuickReplyButton(action=MessageAction(label="label", text="text"))
+            #                    ]))
+            TemplateSendMessage(
+                alt_text='Confirm template',
+                template=ConfirmTemplate(
+                    text='Are you sure?',
+                    actions=[
+                        PostbackAction(
+                            label='postback',
+                            text='postback text',
+                            data='action=buy&itemid=1'
+                        ),
+                        MessageAction(
+                            label='message',
+                            text='message text'
+                        )
+                    ]
+                )
+            )
         )
 
     return 'OK'
