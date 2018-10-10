@@ -1,0 +1,22 @@
+{
+    "fields":[
+        {
+            "id": "ue",
+            "name": "上の畑",
+            "state": "off",
+            "timer": {"start": "", "end": ""}
+        },
+        {
+            "id": "shita",
+            "name": "下の畑",
+            "state": "off",
+            "timer": {"start": "", "end": ""}
+        },
+        {
+            "id": "ura",
+            "name": "裏の畑",
+            "state": "off",
+            "timer": {"start": "", "end": ""}
+        }
+    ]
+}
