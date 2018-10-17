@@ -9,7 +9,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage , Template
+    MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage , Template, ConfirmTemplate
 )
 
 
@@ -52,11 +52,11 @@ def callback(request):
             TemplateSendMessage(
                 alt_text='Confirm template',
                 template=ConfirmTemplate(
-                    text='Are you sure?',
+                    text='指定する畑を選んでください',
                     actions=[
                         PostbackAction(
-                            label='postback',
-                            text='postback text',
+                            label='ue',
+                            text='上の畑',
                             data='action=buy&itemid=1'
                         ),
                         MessageAction(
