@@ -1,22 +1,38 @@
 {
-    "fields":[
-        {
-            "id": "ue",
-            "name": "上の畑",
+    "ue": {
+        "id": "ue",
+        "name": "\u4e0a\u306e\u7551",
+        "state": "off",
+        "start": "15:13",
+        "stop": ""
+    },
+    "shita": {
+        "id": "shita",
+        "name": "\u4e0b\u306e\u7551",
+        "state": "off",
+        "start": "15:19",
+        "stop": ""
+    },
+    "ura": {
+        "id": "ura",
+        "name": "\u88cf\u306e\u7551",
+        "state": "off",
+        "start": "15:09",
+        "stop": ""
+    },
+    "timer": {
+        "ue": {
             "state": "off",
-            "timer": {"start": "", "end": ""}
+            "run": ""
         },
-        {
-            "id": "shita",
-            "name": "下の畑",
+        "shita": {
             "state": "off",
-            "timer": {"start": "", "end": ""}
+            "run": ""
         },
-        {
-            "id": "ura",
-            "name": "裏の畑",
+        "ura": {
             "state": "off",
-            "timer": {"start": "", "end": ""}
+            "run": ""
         }
-    ]
+    },
+    "target": "none"
 }
