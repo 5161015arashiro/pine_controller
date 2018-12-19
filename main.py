@@ -30,9 +30,9 @@ pine = pine_controller()
 
 app = Flask(__name__)
 
-@app.route("/callback", methods=['POST'])
-#def callback(request):
-def callback():
+# @app.route("/callback", methods=['POST'])
+def callback(request):
+# def callback():
     signature = request.headers['X-Line-Signature']
     # get request body as textvagra
     body = request.get_data(as_text=True)
@@ -61,7 +61,7 @@ def callback():
 
     return 'OK'
 
-@app.route("/liff", methods=['GET'])
+# @app.route("/liff", methods=['GET'])
 def liff():
     return render_template('timer.html')
 

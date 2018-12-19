@@ -79,7 +79,7 @@ class pine_controller:
             alt_text='Field Selection',
                 template=ButtonsTemplate(
                     title="タイマー設定",
-                    text="対象となる畑、時間を入力フォームから入力してください",
+                    text="入力フォームから入力してください",
                     actions=[
                         URIAction(
                             label='入力フォームを開く',
@@ -158,7 +158,28 @@ class pine_controller:
                 return TextSendMessage(text="畑が指定されていません")
 
         else:
-            return TextSendMessage(text=message)
+            messages = message.split("\n")
+            if messages[1] == "上の畑":
+                target = "ue"
+            elif messages[1] == "下の畑":
+                target = "shita"
+            else:
+                target = "ura"
+
+            if messages[0] == "タイマーを設定してください":
+                self.df["timer"][target]["state"] = "on"                
+                self.df["timer"][target]["run"] = messages[2]                
+                self.__save_json()
+                return TextSendMessage(text=messages[1] + "のタイマーを設定しました")
+            elif messages[0] == "タイマーを解除してください":
+                self.df["timer"][target]["state"] = "off"                
+                self.df["timer"][target]["run"] = ""                
+                self.__save_json()
+                return TextSendMessage(text=messages[1] + "のタイマーを解除しました")
+
+
+            else:
+                return TextSendMessage(text="ちょっと何言っているか分かりません")
     
     def push_agent(self):
         pass
