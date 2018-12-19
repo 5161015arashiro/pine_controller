@@ -51,11 +51,13 @@ class pine_controller:
 
         if action == 'set':
             self.df["target"] = field
+            self.__save_json()
             return TextSendMessage(text=self.df[field]["name"] + "を指定しました")
         elif action == 'start' or action == 'stop':
             return TextSendMessage(text=self.sprinkle_water(action))
         else:
             self.df["target"] = "none"
+            self.__save_json()
             return TextSendMessage(text="何もしません")
 
 
