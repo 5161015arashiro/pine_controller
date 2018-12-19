@@ -36,7 +36,7 @@ def callback(request):
     # if request.query.liff is not None:
     #     return render_template('timer.html')
     # else:
-    print(dir(request))
+    print(dir(request.method))
     signature = request.headers['X-Line-Signature']
     # get request body as textvagra
     body = request.get_data(as_text=True)
