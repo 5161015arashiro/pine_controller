@@ -30,13 +30,19 @@ pine = pine_controller()
 
 app = Flask(__name__)
 
-# @app.route("/callback", methods=['POST'])
-def callback(request):
-# def callback():
+@app.route('/')
+def hello():
+    """Return a friendly HTTP greeting."""
+    return 'Hello World!'
+
+
+@app.route("/callback", methods=['POST'])
+# def callback(request):
+def callback():
     # if request.query.liff is not None:
     #     return render_template('timer.html')
     # else:
-    print(dir(request.method))
+    # print(dir(request.method))
     signature = request.headers['X-Line-Signature']
     # get request body as textvagra
     body = request.get_data(as_text=True)
@@ -65,9 +71,9 @@ def callback(request):
 
     return 'OK'
 
-# # @app.route("/liff", methods=['GET'])
-# def liff():
-#     return render_template('timer.html')
+@app.route("/liff", methods=['GET'])
+def liff():
+    return render_template('timer.html')
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
@@ -77,4 +83,5 @@ if __name__ == "__main__":
     arg_parser.add_argument('-d', '--debug', default=True, help='debug')
     options = arg_parser.parse_args()
 
-    app.run(debug=options.debug, port=options.port, host="0.0.0.0")
+    # app.run(debug=options.debug, port=options.port, host="0.0.0.0")
+    app.run(host='127.0.0.1', port=8080, debug=True)
